@@ -1,0 +1,506 @@
+/* Общие стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+/* Шапка */
+.header {
+  background-color: #222;
+  color: #fff;
+  padding: 15px 0;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.glav_container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 50px;
+    background-color: #dbdbdb;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.pred_glav{
+  max-width: 1200px;
+  display: flex;
+  gap: 355px;
+}
+
+.glav_container_left a{
+  text-decoration: none;
+  color: #222;
+}
+
+.glav_container_left ul{
+    display: flex;
+    gap: 50px
+}
+
+.glav_container_left ul li::marker{
+    color: rgb(255, 102, 0);
+}
+
+.glav_container_right{
+    display: flex;
+    gap: 20px;
+}
+
+.glav_container_right a{
+  text-decoration: none;
+  color: black;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #ff5722;
+}
+
+.contact-info {
+    display: flex;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-size: 14px;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    box-shadow: 0px 7px 10px -10px black;
+}
+
+.stol_and_stul{
+    display: flex;
+    font-size: 23px;
+    margin: 20px;
+    gap: 100px;
+}
+
+.contact-info a{
+    text-decoration: none;
+    color: black;
+}
+
+.contact-info strong {
+  font-weight: bold;
+}
+
+.src_and_cart{
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.header-icons button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.breadcrumb {
+  margin-bottom: 30px;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+
+.breadcrumb span {
+  color: #333;
+}
+
+.delivery-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.delivery-section {
+  padding: 40px 0;
+  
+}
+
+.delivery-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.delivery-card {
+  flex: 1;
+  min-width: 250px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 20px;
+}
+
+.icon-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-title img {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.icon-row img {
+  width: 18px;
+  height: 18px;
+}
+
+.delivery-card h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+.delivery-card .price {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.delivery-card .price span {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Самовывоз */
+.pickup-card {
+  background: #fafafa;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.pickup-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pickup-header img {
+  width: 28px;
+  height: 28px;
+}
+
+.pickup-card p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pickup-card p img {
+  width: 20px;
+  height: 20px;
+}
+
+.free{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.free p {
+    font-size: 20px;
+}
+
+.uslovia{
+    display: flex;
+    gap: 30px;
+    margin-bottom: 10px;
+}
+
+.uslovia_1{
+    display: grid;
+    gap: 5px;
+}
+
+.uslovia_2{
+    display: grid;
+    gap: 5px;
+}
+
+
+
+/* Оплата */
+.payment-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 15px 0 40px;
+}
+
+.payment-block img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Сервисные услуги */
+.service-section h4 {
+  margin-top: 15px;
+}
+
+.service-section ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  color: #333;
+}
+
+.service-section li {
+  margin-bottom: 4px;
+}
+
+.service-section .note {
+  font-size: 14px;
+  color: #444;
+  margin-top: 10px;
+}
+
+/* Подвал */
+.footer {
+  background-color: #2F1810;
+  color: #fff;
+  padding: 40px 0;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.footer-logo .mini_img{
+  height: 25px;
+  float: left;
+  margin-right: 15px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 40px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-column h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-column a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 10px;
+  transition: color 0.3s;
+}
+
+.footer-column a:hover {
+  color: #ff5722;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 20px;
+}
+
+.copyright,
+.region-info {
+  font-size: 12px;
+}
+
+.payment-methods img {
+  height: 20px;
+}
+
+@media (max-width: 1024px) {
+
+  .contact-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .stol_and_stul {
+    gap: 30px;
+    font-size: 25px;
+    flex-wrap: nowrap;
+  }
+
+  .glav_container {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .pred_glav {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .glav_container_left ul {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  .glav_container_right {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .src_and_cart{
+    gap: 50px;
+    margin-bottom: 20px;
+  }
+
+  .src_and_cart img{
+    width: 50px;
+  }
+
+  .breadcrumb {
+    padding: 0 20px;
+    text-align: left;
+  }
+
+  .breadcrumb h2 {
+    font-size: 22px;
+    margin-top: 10px;
+  }
+
+  .feedback-container {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .feedback-container h2 {
+    font-size: 20px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  .form-group select,
+  .form-group input,
+  .form-group textarea {
+    font-size: 14px;
+  }
+
+  .personal-data {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-submit {
+    width: 100%;
+    font-size: 18px;
+    padding: 15px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 30px;
+    justify-self: center;
+    flex-wrap: nowrap; 
+  }
+
+  .footer-logo{
+    display: grid;
+    justify-items: center;
+  }
+
+  .info_pole{
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 30px;
+    align-self: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .region-info {
+    text-align: center;
+  }
+}

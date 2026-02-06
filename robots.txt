@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /authorization.html
+Disallow: /registr.html
+Sitemap: https://ваш-домен.рф/sitemap.xml

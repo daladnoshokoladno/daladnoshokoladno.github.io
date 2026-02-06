@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админ-панель — CHARLIDER</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="table.css">
+</head>
+<body>
+  <div class="glav_container">
+    <div class="pred_glav">
+      <div class="glav_container_left">
+        <ul>
+          <a href="#"><li><p>Новинки</p></li></a>
+          <a href="#"><li><p>Хиты продаж</p></li></a>
+          <a href="#"><li><p>Акции</p></li></a>
+        </ul>
+      </div>
+      <div class="glav_container_right">
+        <a href="home.html"><p>Личный кабинет</p></a>
+        <p>|</p>
+        <a href="autorization.html"><p>Вход</p></a>
+        <p>|</p>
+        <a href="question.html"><p>Обратная связь</p></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-info">
+    <a href="index.html"><img class="logo" src="Group 14.png" alt="CharLider"></a>
+    <div class="stol_and_stul">
+      <a href="table.html"><p>Столы</p></a>
+      <a href="chair.html"><p>Стулья</p></a>
+    </div>
+    <div>
+      <p><strong>+7 (812) 426-12-55</strong> (Чебоксары)</p>
+      <p><strong>8 (800) 500-09-76</strong> (бесплатно по России)</p>
+    </div>
+    <div class="src_and_cart">
+      <a href="#"><img src="/Search.png"></a>
+      <a href="cart.html"><img src="/Shopping cart.png"></a>
+    </div>
+  </div>
+
+  <section class="admin">
+    <div class="tabs">
+      <button class="tab active" data-tab="reviews">Отзывы</button>
+      <button class="tab" data-tab="catalog">Каталог</button>
+      <button class="tab" data-tab="card">Карточка товара</button>
+    </div>
+
+    <div class="tab-content" id="reviews">
+      <div class="filters">
+        <p></p>
+        <select id="reviewsFilter" class="filterSelect">
+          <option value="all">Все отзывы</option>
+          <option value="5">5 ★</option>
+          <option value="4">4 ★</option>
+          <option value="3">3 ★</option>
+          <option value="2">2 ★</option>
+          <option value="1">1 ★</option>
+        </select>
+      </div>
+      <div class="reviews-list"></div>
+    </div>
+
+    <div class="tab-content" id="catalog" style="display:none">
+      <div class="filters">
+       <button id="addProduct" class="main_btn">+ Добавить товар</button>
+        <select id="catalogFilter" class="filterSelect">
+          <option value="all">Все</option>
+          <option value="chairs">Стулья</option>
+          <option value="tables">Столы</option>
+          <option value="cheap">Дешёвые</option>
+          <option value="expensive">Дорогие</option>
+        </select>
+      </div>
+      <div class="catalog-grid"></div>
+    </div>
+
+    <div class="tab-content" id="card" style="display:none">
+      <div class="card-form">
+        <div class="image-preview" id="imagePreview">Нет изображения</div>
+        <input type="file" id="imageInput" accept="image/*">
+        <label>Название</label>
+        <input type="text" id="nameInput">
+        <label>Категория</label>
+        <select id="categoryInput">
+          <option value="chairs">Стулья</option>
+          <option value="tables">Столы</option>
+        </select>
+        <label>Цена</label>
+        <input type="number" id="priceInput">
+        <label>Код товара</label>
+        <input type="text" id="codeInput">
+        <label>Цвет</label>
+        <input type="text" id="colorInput">
+        <label>Описание</label>
+        <textarea id="descInput"></textarea>
+        <label><input type="checkbox" id="stockInput"> В наличии</label>
+        <label>Цена доставки</label>
+        <input type="number" id="deliveryInput">
+        <button id="saveBtn" class="main_btn">Сохранить</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="admin_footer">Админ-панель</div>
+
+  <script>
+    const tabs=document.querySelectorAll(".tab")
+    const contents=document.querySelectorAll(".tab-content")
+    tabs.forEach(tab=>tab.onclick=()=>{
+      tabs.forEach(t=>t.classList.remove("active"))
+      tab.classList.add("active")
+      contents.forEach(c=>c.style.display="none")
+      document.getElementById(tab.dataset.tab).style.display="block"
+    })
+    const reviews=[
+      {id:1,name:"Губошлёп",stars:5,text:"Отличный стул!"},
+      {id:2,name:"Мамут Рахал",stars:4,text:"Хорошо, но ожидала больше"},
+      {id:3,name:"Говновозник1997",stars:3,text:"Средний товар"},
+      {id:4,name:"Дрыщ",stars:1,text:"Плохое качество"}
+    ]
+    const list=document.querySelector(".reviews-list")
+    function renderReviews(filter="all"){
+      list.innerHTML=""
+      let f=filter==="all"?reviews:reviews.filter(r=>r.stars==filter)
+      f.forEach(r=>{
+        const div=document.createElement("div")
+        div.className="review"
+        div.innerHTML=`<h4>${r.name} <span>${"★".repeat(r.stars)}</span></h4><p>${r.text}</p><button class='delete main_btn'>Удалить</button>`
+        div.querySelector(".delete").onclick=()=>{const i=reviews.indexOf(r);reviews.splice(i,1);renderReviews(filter)}
+        list.append(div)
+      })
+    }
+    const reviewsFilter = document.getElementById("reviewsFilter")
+      reviewsFilter.onchange = () => {
+        const value = reviewsFilter.value
+        renderReviews(value)
+      }
+      renderReviews()
+
+    const catalog=[
+      {id:1,name:"СТУЛ ABOBUS 130 NHT DFH YH",price:19900,category:"chairs",img:"image 6.png"},
+      {id:2,name:"СТОЛ REBUS 150 NEO KIU WV",price:100900,category:"tables",img:"image 7.png"},
+      {id:3,name:"СТОЛ REBUS 150 NEO KIU WV",price:100900,category:"chairs",img:"image 7.png"}
+    ]
+    const grid=document.querySelector(".catalog-grid")
+    function renderCatalog(filter="all"){
+      grid.innerHTML=""
+      let f=[...catalog]
+      if(filter==="chairs")f=f.filter(p=>p.category==="chairs")
+      if(filter==="tables")f=f.filter(p=>p.category==="tables")
+      if(filter==="cheap")f=f.filter(p=>p.price<10000)
+      if(filter==="expensive")f=f.filter(p=>p.price>10000)
+      f.forEach(p=>{
+        const div=document.createElement("div")
+        div.className="catalog-item"
+        div.innerHTML=`<img src="${p.img}"><h4>${p.name}</h4><p>${p.price} ₽</p><div class='btns'><button class='main_btn edit'>Редактировать</button><button class='main_btn del'>Удалить</button></div>`
+        div.querySelector(".edit").onclick=()=>openCard(p)
+        div.querySelector(".del").onclick=()=>{const i=catalog.indexOf(p);catalog.splice(i,1);renderCatalog(filter)}
+        grid.append(div)
+      })
+    }
+    const filterSelect = document.getElementById("catalogFilter")
+      filterSelect.onchange = () => {
+        const value = filterSelect.value
+        renderCatalog(value)
+      }
+      renderCatalog()
+
+    let currentProduct=null
+    const preview=document.getElementById("imagePreview")
+    const inputFile=document.getElementById("imageInput")
+    const nameInput=document.getElementById("nameInput")
+    const catInput=document.getElementById("categoryInput")
+    const priceInput=document.getElementById("priceInput")
+    const codeInput=document.getElementById("codeInput")
+    const colorInput=document.getElementById("colorInput")
+    const descInput=document.getElementById("descInput")
+    const stockInput=document.getElementById("stockInput")
+    const deliveryInput=document.getElementById("deliveryInput")
+    const saveBtn=document.getElementById("saveBtn")
+    inputFile.onchange=e=>{
+      const file=e.target.files[0]
+      if(!file)return
+      const r=new FileReader()
+      r.onload=()=>{preview.innerHTML=`<img src='${r.result}'>`}
+      r.readAsDataURL(file)
+    }
+    function openCard(p){
+      currentProduct=p
+      document.querySelector(".tab.active").classList.remove("active")
+      document.querySelector("[data-tab='card']").classList.add("active")
+      contents.forEach(c=>c.style.display="none")
+      document.getElementById("card").style.display="block"
+      preview.innerHTML=p.img?`<img src='${p.img}'>`:"Нет изображения"
+      nameInput.value=p.name
+      catInput.value=p.category
+      priceInput.value=p.price
+      codeInput.value=p.id
+      colorInput.value=p.color||""
+      descInput.value=p.desc||""
+      stockInput.checked=true
+      deliveryInput.value=500
+    }
+    saveBtn.onclick=()=>{
+      if(!currentProduct)return
+      currentProduct.name=nameInput.value
+      currentProduct.category=catInput.value
+      currentProduct.price=priceInput.value
+      renderCatalog()
+      alert("Сохранено")
+    }
+    const addBtn = document.getElementById("addProduct")
+    addBtn.onclick = () => {
+    const id = Date.now()
+    const newProduct = {
+        id: id,
+        name: "Новый товар",
+        price: 0,
+        category: "chairs",
+        img: "",
+        color: "",
+        desc: "",
+    }
+    catalog.push(newProduct)
+    renderCatalog()
+    openCard(newProduct)
+    alert("Новый товар добавлен в каталог")
+    }
+  </script>
+</body>
+</html>
